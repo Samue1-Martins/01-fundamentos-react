@@ -7,6 +7,38 @@ import styles from "./App.module.css"
 import { Header } from './components/Header/Header'
 
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/Samue1-Martins.png",
+      name: "Samuel Martins",
+      role: "Student"
+    },
+    content: [
+      { type: 'paragraph', content: 'Salve rapaziada' },
+      { type: 'paragraph', content: 'Acabei de realizar este projeto' },
+      { type: 'link', content: 'samuel.filllmaker/galdosb' }
+    ],
+    publishedAt: new Date('2023-02-24 17:00:00')
+  },
+
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://github.com/Samue1-Martins.png",
+      name: "Samuel Martins",
+      role: "Student"
+    },
+    content: [
+      { type: 'paragraph', content: 'Salve rapaziada' },
+      { type: 'paragraph', content: 'Acabei de realizar este projeto' },
+      { type: 'link', content: 'samuel.filllmaker/galdosb' }
+    ],
+    publishedAt: new Date('2025-02-24 17:00:00')
+  }
+]
+
 export function App() {
   return (
     <>
@@ -16,16 +48,16 @@ export function App() {
 
         <Sidebar />
         <main>
-            <Post
-              author="Samuel Martins"
-              content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ratione accusantium placeat sint perspiciatis modi pariatur exercitationem eius sapiente. Repudiandae soluta harum velit earum possimus nostrum nam dolor modi sunt?"
-            />
-
-            <Post
-              author="Lucy Martins"
-              content="Eu amo cozinhar"
-            />
-          </main>
+          {posts.map(post => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
+        </main>
       </div>
 
     </>
